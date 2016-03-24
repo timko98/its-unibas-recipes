@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of SWITCHDrive and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.its-unibas.munki.switchdrive</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Storage</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/switch</string>
+		<key>NAME</key>
+		<string>SWITCHdrive</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>autoremove</key>
+			<false/>
+			<key>blocking_applications</key>
+			<array>
+				<string>SWITCHdrive</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>SWITCHdrive – der akademische Cloud-Speicherdienst der Schweiz
+
+Dateien sicher speichern, jederzeit mobil darauf zugreifen und mit anderen teilen: Das geht einfach und sicher mit SWITCHdrive.
+
+Synchronisieren und Sharen: Hochschulangehörigen bietet SWITCHdrive eine sichere Alternative zu kommerziellen Cloud-Storage-Diensten. Damit können Dateien schnell und zuverlässig gespeichert, synchronisiert, mit anderen geteilt oder gemeinsam bearbeitet werden. 
+
+Ihre Daten immer sicher dabei: Der akademische Cloud-Storage-Dienst lässt sich bequem per Browser, Desktop-Client oder mobiler App bedienen. Sämtliche Daten werden auf Servern im Schweizer Wissenschaftsnetz gespeichert.</string>
+			<key>developer</key>
+			<string>SWITCH</string>
+			<key>display_name</key>
+			<string>SWITCHdrive</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>removepackages</string>
+			<key>uninstallable</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.its-unibas.pkg.switchdrive</string>
+	<key>Process</key>
+	<array>
+		<dict>
+		    <key>Processor</key>
+		    <string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>munkiimport_appname</key>
+				<string>SWITCHDrive.app</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
