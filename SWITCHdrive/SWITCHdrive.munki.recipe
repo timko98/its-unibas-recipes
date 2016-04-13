@@ -20,7 +20,7 @@
 			<false/>
 			<key>blocking_applications</key>
 			<array>
-				<string>SWITCHdrive</string>
+				<string>switchdrive</string>
 			</array>
 			<key>catalogs</key>
 			<array>
