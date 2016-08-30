@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads and repackages the current release version of SWITCHcast DeviceMonitor and imports it into Munki.
+We require logout because the launch agent has to run in user context.</string>
+	<key>Identifier</key>
+	<string>com.github.its-unibas.munki.switchdrivedevicemonitor</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Media</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/switch</string>
+		<key>NAME</key>
+		<string>SWITCHcast DeviceMonitor</string>
+		<key>pkginfo</key>
+		<dict>
+        		<key>RestartAction</key>
+			<string>RequireLogout</string>
+			<key>autoremove</key>
+			<false/>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>The SWITCHcast Recorder is a sophisticated video capture agent for Apple Macintosh computers capable of recording two independent Full HD input sources simultaneoulsy. This is needed if you want to record the lecturer in one video stream, and the slides in the other video stream.
+
+SWITCH cast Recorder is the software you need to record and store the video streams on the hard disk of your computer, and to upload them to the SWITCH video servers for further processing.
+
+SWITCH cast Recorder is recommended if you want to manually record lectures at your institution, or if you want to record lectures automatically according to entries in a calendar, or if you want to record communication trainings (so called iVTs).
+
+See the following sections about technical requirements, download and installation of SWITCHcast Recorder.</string>
+			<key>developer</key>
+			<string>SWITCH</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>display_name</key>
+			<string>SWITCHcast DeviceMonitor</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>removepackages</string>
+			<key>uninstallable</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.its-unibas.pkg.switchcastdevicemonitor</string>
+	<key>Process</key>
+	<array>
+		<dict>
+		    <key>Processor</key>
+		    <string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
