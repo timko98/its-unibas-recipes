@@ -40,9 +40,9 @@ See the following sections about technical requirements, download and installati
 			<key>display_name</key>
 			<string>SWITCHcast Recorder</string>
 			<key>unattended_install</key>
-			<true/>
+			<false/>
 			<key>unattended_uninstall</key>
-			<true/>
+			<false/>
 			<key>uninstall_method</key>
 			<string>removepackages</string>
 			<key>uninstallable</key>
