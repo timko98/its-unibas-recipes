@@ -6,7 +6,7 @@
 	<string>Downloads and repackages the current release version of SWITCHcast DeviceMonitor and imports it into Munki.
 We require logout because the launch agent has to run in user context.</string>
 	<key>Identifier</key>
-	<string>com.github.its-unibas.munki.switchdrivedevicemonitor</string>
+	<string>com.github.its-unibas.munki.switchcastdevicemonitor</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_CATEGORY</key>
@@ -67,8 +67,8 @@ See the following sections about technical requirements, download and installati
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
+		<key>Processor</key>
+		<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>
