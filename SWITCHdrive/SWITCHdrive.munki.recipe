@@ -51,9 +51,55 @@ Ihre Daten immer sicher dabei: Der akademische Cloud-Storage-Dienst lässt sich 
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.its-unibas.pkg.switchdrive</string>
+	<string>com.github.its-unibas.download.switchdrive</string>
 	<key>Process</key>
 	<array>
+		<dict>
+		    <key>Processor</key>
+		    <string>FlatPkgUnpacker</string>
+		    <key>Arguments</key>
+		    <dict>
+			<key>destination_path</key>
+			<string>%RECIPE_CACHE_DIR%/expanded</string>
+			<key>flat_pkg_path</key>
+			<string>%pathname%</string>
+		    </dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>PkgPayloadUnpacker</string>
+		    <key>Arguments</key>
+		    <dict>
+			<key>destination_path</key>
+			<string>%RECIPE_CACHE_DIR%/unpack</string>
+			<key>pkg_payload_path</key>
+			<string>%RECIPE_CACHE_DIR%/expanded/SWITCHdrive.pkg/Payload</string>
+		    </dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>Versioner</string>
+		    <key>Arguments</key>
+		    <dict>
+			<key>input_plist_path</key>
+			<string>%RECIPE_CACHE_DIR%/unpack/Applications/SWITCHdrive.app/Contents/Info.plist</string>
+			<key>plist_version_key</key>
+			<string>CFBundleVersion</string>
+		    </dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>MunkiInstallsItemsCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+			<key>faux_root</key>
+			<string>%RECIPE_CACHE_DIR%/unpack</string>
+			<key>installs_item_paths</key>
+			<array>
+				<string>/Applications/switchdrive.app</string>
+			</array>
+		    </dict>
+		</dict>
 		<dict>
 		    <key>Processor</key>
 		    <string>MunkiPkginfoMerger</string>
