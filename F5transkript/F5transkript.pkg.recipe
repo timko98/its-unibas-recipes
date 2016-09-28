@@ -53,6 +53,19 @@
                 <string>CFBundleShortVersionString</string>
             </dict>
         </dict>
+	<dict>
+            <key>Processor</key>
+            <string>MunkiInstallsItemsCreator</string>
+            <key>Arguments</key>
+            <dict>
+		<key>faux_root</key>
+		<string>%pkgroot%</string>
+                <key>installs_item_paths</key>
+                <array>
+                    <string>/Applications/F5.app</string>
+                </array>
+            </dict>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>PkgCreator</string>
