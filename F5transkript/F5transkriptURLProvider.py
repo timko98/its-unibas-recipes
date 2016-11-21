@@ -8,7 +8,7 @@ import urllib2
 
 
 BASE_URL = "https://www.audiotranskription.de"
-REGEX = "<a.*?href=\"(.+?)\">f5transkript v3</a>"
+REGEX = "<a.*?href=\"(.+?)\">.*r Mac</a>"
 
 __all__ = ["F5transkriptURLProvider"]
 
