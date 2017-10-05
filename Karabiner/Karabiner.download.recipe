@@ -42,63 +42,13 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpacked</string>
-				<key>flat_pkg_path</key>
-				<string>%pathname%/Karabiner.sparkle_guided.pkg</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgpayloadunpacked</string>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpacked/Installer.pkg/Payload</string>
-			</dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgpayloadunpacked/Applications/Karabiner.app</string>
+				<string>%pathname%/Karabiner.sparkle_guided.pkg</string>
 				<key>requirement</key>
 				<string>identifier "org.pqrs.Karabiner" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = G43BCU2T37</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgpayloadunpacked/Applications/Karabiner.app/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleVersion</string>
-			</dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>faux_root</key>
-				<string>%RECIPE_CACHE_DIR%/pkgpayloadunpacked</string>
-				<key>installs_item_paths</key>
-				<array>
-					<string>/Applications/Karabiner.app</string>
-					<string>/Library/LaunchDaemons/org.pqrs.Karabiner.load.plist</string>
-					<string>/Library/Application Support/org.pqrs/Karabiner/Karabiner.signed.kext</string>
-				</array>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string>
 		</dict>
 	</array>
 </dict>

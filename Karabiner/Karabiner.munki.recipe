@@ -43,6 +43,56 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%/Karabiner.sparkle_guided.pkg</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgpayloadunpacked</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked/Installer.pkg/Payload</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgpayloadunpacked/Applications/Karabiner.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleVersion</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/pkgpayloadunpacked</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Karabiner.app</string>
+					<string>/Library/LaunchDaemons/org.pqrs.Karabiner.load.plist</string>
+					<string>/Library/Application Support/org.pqrs/Karabiner/Karabiner.signed.kext</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 		</dict>
