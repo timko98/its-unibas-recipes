@@ -17,7 +17,7 @@ We require logout because the launch agent has to run in user context.</string>
 		<string>SWITCHcast Recorder</string>
 		<key>pkginfo</key>
 		<dict>
-        		<key>RestartAction</key>
+			<key>RestartAction</key>
 			<string>RequireLogout</string>
 			<key>autoremove</key>
 			<false/>
@@ -25,6 +25,8 @@ We require logout because the launch agent has to run in user context.</string>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>The SWITCHcast Recorder is a sophisticated video capture agent for Apple Macintosh computers capable of recording two independent Full HD input sources simultaneoulsy. This is needed if you want to record the lecturer in one video stream, and the slides in the other video stream.
 
@@ -35,8 +37,6 @@ SWITCH cast Recorder is recommended if you want to manually record lectures at y
 See the following sections about technical requirements, download and installation of SWITCHcast Recorder.</string>
 			<key>developer</key>
 			<string>SWITCH</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 			<key>display_name</key>
 			<string>SWITCHcast Recorder</string>
 			<key>unattended_install</key>
@@ -56,8 +56,8 @@ See the following sections about technical requirements, download and installati
 	<key>Process</key>
 	<array>
 		<dict>
-		    <key>Processor</key>
-		    <string>MunkiPkginfoMerger</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -67,8 +67,8 @@ See the following sections about technical requirements, download and installati
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
-		<key>Processor</key>
-		<string>MunkiImporter</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

@@ -26,18 +26,14 @@
 			</array>
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
-			<key>developer</key>
-			<string>%MUNKI_DEVELOPER%</string>
 			<key>description</key>
 			<string>Anaconda is the leading open data science platform powered by Python. The open source version of Anaconda is a high performance distribution of Python and R and includes over 100 of the most popular Python, R and Scala packages for data science.</string>
+			<key>developer</key>
+			<string>%MUNKI_DEVELOPER%</string>
 			<key>display_name</key>
 			<string>%NAME%</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>uninstall_method</key>
-			<string>removepackages</string>
-			<key>uninstallable</key>
-			<true/>
 			<key>postinstall_script</key>
 			<string>#!/bin/bash
 # Set correct file permissions
@@ -53,6 +49,10 @@ rm "/Applications/Anaconda-Navigator.app"
 rm -rf "/anaconda"
 exit 0
 			</string>
+			<key>uninstall_method</key>
+			<string>removepackages</string>
+			<key>uninstallable</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
@@ -60,16 +60,16 @@ exit 0
 	<key>Process</key>
 	<array>
 		<dict>
-		    <key>Processor</key>
-		    <string>MunkiPkginfoMerger</string>
-		    <key>Arguments</key>
-		    <dict>
-			<key>additional_pkginfo</key>
+			<key>Arguments</key>
 			<dict>
-			    <key>version</key>
-			    <string>%version%</string>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
 			</dict>
-		    </dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

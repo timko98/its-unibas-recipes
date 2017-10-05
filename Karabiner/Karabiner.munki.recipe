@@ -10,24 +10,24 @@
 	<string>com.github.its-unibas.munki.Karabiner</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Productivity</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>Karabiner</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Productivity</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>MacBook keyboard remapper (was KeyRemap4MacBook).</string>
 			<key>developer</key>
 			<string>Fumihiko Takayama</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 			<key>display_name</key>
 			<string>Karabiner</string>
 			<key>name</key>
@@ -43,8 +43,8 @@
 	<key>Process</key>
 	<array>
 		<dict>
-		    <key>Processor</key>
-		    <string>MunkiPkginfoMerger</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
