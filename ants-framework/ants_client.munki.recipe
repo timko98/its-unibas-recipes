@@ -22,6 +22,8 @@
 			<string>ANTS is a framework to manage and apply macOS and Linux host configurations using Ansible Pull.</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>display_name</key>
+			<string>ANTS Client</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
