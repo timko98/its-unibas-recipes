@@ -8,6 +8,8 @@
 	<string>com.github.its-unibas.munki.Anaconda</string>
 	<key>Input</key>
 	<dict>
+		<key>INSTALLER_TYPE</key>
+		<string>pkg</string>
 		<key>MUNKI_CATALOGS</key>
 		<string>testing</string>
 		<key>MUNKI_CATEGORY</key>
