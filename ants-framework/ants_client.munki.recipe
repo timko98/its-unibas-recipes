@@ -26,6 +26,10 @@
 			<string>ANTS Client</string>
 			<key>unattended_install</key>
 			<true/>
+            <key>developer</key>
+            <string>IT Services University of Basel</string>
+            <key>category</key>
+            <string>Configuration Management</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
