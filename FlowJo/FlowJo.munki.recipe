@@ -50,6 +50,10 @@
 	    </array>
 			<key>postinstall_script</key>
 			<string>#!/bin/bash
+# FlowJo offers a plugin system, where the user can add new plugins by
+# adding them to a plugins folder in the Application folder.
+# To prevent confusion we create a new folder called "Plugins for FlowJo"
+# (instead of just plugins) and link it with the now invisible plugins folder.
 cd /Applications
 ln -s /Applications/FlowJo.app/Contents/Resources/plugins/
 ln -s /Applications/FlowJo.app/Contents/Resources/plugins/ "Plugins for FlowJo"
