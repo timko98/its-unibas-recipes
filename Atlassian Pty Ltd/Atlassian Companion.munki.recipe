@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created with Recipe Robot v1.0.5 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of Atlassian Companion and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.its-unibas.munki.AtlassianCompanion</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>Atlassian Companion</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>&lt;html&gt;&lt;p style="font-family:Helvetica;font-size:12px"&gt;The Atlassian Companion app manages the download and re-upload of files you edit in Confluence.&lt;/p&gt;
+
+&lt;p style="font-family:Helvetica;font-size:12px"&gt;The first time you edit a file, you will be prompted to install the Companion app and allow it to connect to your Confluence site.&lt;/p&gt;
+
+&lt;ul style="font-family:Helvetica;font-size:12px"&gt;
+    &lt;li&gt;Click the file to open it in preview.&lt;/li&gt;
+    &lt;li&gt;Click Edit with.&lt;/li&gt;
+    &lt;li&gt;Follow the prompts to download and install the Atlassian Companion app.&lt;/li&gt;
+    &lt;li&gt;Launch the Companion app.&lt;/li&gt;
+    &lt;li&gt;In the Companion app, click Trust to confirm you want to connect to Confluence.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style="font-family:Helvetica;font-size:12px"&gt;For more information, see the following &lt;a href="https://confluence.atlassian.com/doc/edit-files-170494553.html#EditFiles-AtlassianCompanionapp" target="_blank"&gt;Atlassian support article&lt;/a&gt;.&lt;/p&gt; &lt;/html&gt;</string>
+			<key>developer</key>
+			<string>Atlassian Pty Ltd</string>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>display_name</key>
+			<string>Atlassian Companion</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.its-unibas.download.AtlassianCompanion</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
