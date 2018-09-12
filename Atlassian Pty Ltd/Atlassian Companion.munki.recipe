@@ -20,6 +20,8 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Productivity</string>
 			<key>description</key>
 			<string>&lt;html&gt;&lt;p style="font-family:Helvetica;font-size:12px"&gt;The Atlassian Companion app manages the download and re-upload of files you edit in Confluence.&lt;/p&gt;
 
@@ -36,8 +38,6 @@
 &lt;p style="font-family:Helvetica;font-size:12px"&gt;For more information, see the following &lt;a href="https://confluence.atlassian.com/doc/edit-files-170494553.html#EditFiles-AtlassianCompanionapp" target="_blank"&gt;Atlassian support article&lt;/a&gt;.&lt;/p&gt; &lt;/html&gt;</string>
 			<key>developer</key>
 			<string>Atlassian Pty Ltd</string>
-			<key>category</key>
-			<string>Productivity</string>
 			<key>display_name</key>
 			<string>Atlassian Companion</string>
 			<key>name</key>
