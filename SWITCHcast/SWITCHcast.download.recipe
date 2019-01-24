@@ -10,6 +10,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>SWITCHcast</string>
+		<key>URL</key>
+		<string>https://help.switch.ch/cast/recording/mobile-equipment/recording-software/switchcast-recorder/download/</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -21,7 +23,7 @@
 				<key>re_pattern</key>
 				<string>(https://misc.www.switch.ch/cast/SWITCHcastRecorder[\d_]+.zip)</string>
 				<key>url</key>
-				<string>https://help.switch.ch/cast/recording/recording-software/switchcast-recorder/download/</string>
+				<string>%URL%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
