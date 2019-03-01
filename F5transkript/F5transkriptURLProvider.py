@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from HTMLParser import HTMLParser
 from autopkglib import Processor, ProcessorError
@@ -8,7 +9,7 @@ import urllib2
 
 
 BASE_URL = "https://www.audiotranskription.de"
-REGEX = "<a.*?href=\"(.+?)\">.*r Mac</a>"
+REGEX = 'href="(\/audot\/downloadfile\.php\?.*)">Download für Mac \(f5\)'
 
 __all__ = ["F5transkriptURLProvider"]
 
@@ -24,11 +25,16 @@ class F5transkriptURLProvider(Processor):
     }
 
     def main(self):
+
         try:
             response = urllib2.urlopen(BASE_URL + "/downloads.html")
             html_source = response.read()
             escaped_url = re.search(REGEX, html_source).group(1)
             url = HTMLParser().unescape(escaped_url)
+            if self.env["verbose"] > 0:
+                print "F5transkriptURLProvider: Match found is: %s" % escaped_url
+                print "F5transkriptURLProvider: Unescaped url is: %s" % url
+                print "F5transkriptURLProvider: Returning full url: %s%s" % (BASE_URL, url)
         except BaseException as err:
             raise ProcessorError("Failed to get URL: %s" % err)
         self.env["url"] = BASE_URL + url
