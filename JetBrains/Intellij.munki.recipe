@@ -13,6 +13,8 @@
   		<string>apps/JetBrains/Intellij</string>
   		<key>NAME</key>
   		<string>Intellij</string>
+      <key>edition</key>
+  		<string>C</string>
   		<key>pkginfo</key>
   		<dict>
   			<key>catalogs</key>
@@ -25,6 +27,10 @@
   			<string>Intellij Community Edition</string>
   			<key>name</key>
   			<string>%NAME%</string>
+        <key>category</key>
+        <string>Productivity</string>
+        <key>developer</key>
+        <string>JetBrains</string>
   			<key>unattended_install</key>
   			<true/>
   		</dict>
