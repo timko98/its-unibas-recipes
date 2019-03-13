@@ -69,7 +69,9 @@ class PyCharmURLProvider(Processor):
         if intellij_product is not None:
             channels = intellij_product.getElementsByTagName('channel')
             for channel in channels:
-                if channel.hasAttribute('licensing') and channel.getAttribute('licensing') == 'release':
+                if channel.hasAttribute('licensing') and channel.getAttribute(
+                        'licensing') == 'release' and channel.hasAttribute(
+                        'name') and 'EAP' not in channel.getAttribute('name'):
                     builds = channel.getElementsByTagName('build')
                     available_versions = list()
                     for build in builds:
