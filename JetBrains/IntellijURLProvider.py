@@ -68,15 +68,17 @@ class IntellijURLProvider(Processor):
         if intellij_product is not None:
             channels = intellij_product.getElementsByTagName('channel')
             for channel in channels:
-                if channel.hasAttribute('licensing') and channel.getAttribute('licensing') == 'release':
-                    builds = channel.getElementsByTagName('build')
-                    available_versions = list()
-                    for build in builds:
-                        if build.hasAttribute('version'):
-                            available_versions.append(build.getAttribute('version'))
-                    available_versions.sort(reverse=True)
-                    # We can return here because we found the release channel.
-                    return str(available_versions[0])
+                if channel.hasAttribute('licensing') and channel.getAttribute(
+                        'licensing') == 'release':
+                    if channel.hasAttribute('name') and 'EAP' not in channel.getAttribute('name'):
+                        builds = channel.getElementsByTagName('build')
+                        available_versions = list()
+                        for build in builds:
+                            if build.hasAttribute('version'):
+                                available_versions.append(build.getAttribute('version'))
+                        available_versions.sort(reverse=True)
+                        # We can return here because we found the release channel.
+                        return str(available_versions[0])
         else:
             raise ProcessorError(
                 'Did not find Intellij in version XML.'
