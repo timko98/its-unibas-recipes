@@ -18,18 +18,18 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Configuration Management</string>
 			<key>description</key>
 			<string>ANTS is a framework to manage and apply macOS and Linux host configurations using Ansible Pull.</string>
-			<key>name</key>
-			<string>%NAME%</string>
+			<key>developer</key>
+			<string>IT Services University of Basel</string>
 			<key>display_name</key>
 			<string>ANTS Client</string>
+			<key>name</key>
+			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
-            <key>developer</key>
-            <string>IT Services University of Basel</string>
-            <key>category</key>
-            <string>Configuration Management</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -70,6 +70,7 @@
 					<string>/Library/LaunchDaemons/ch.unibas.its.cs.ants.plist</string>
 					<string>/Library/LaunchDaemons/ch.unibas.its.cs.ants.run-now.plist</string>
 					<string>/Library/ANTS-Framework/bin/ants</string>
+					<string>/private/etc/paths.d/ch.unibas.its.cs.ants</string>
 				</array>
 			</dict>
 			<key>Processor</key>
