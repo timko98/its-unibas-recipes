@@ -44,54 +44,6 @@
 					<key>choiceIdentifier</key>
 					<string>com.tableausoftware.desktopShortcut</string>
 				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>com.amazon.redshiftodbc</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>com.tableausoftware.mysql</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>com.tableausoftware.oracle</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>com.tableausoftware.postgresql</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>com.simba.sparkodbc</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>com.simba.sqlserverodbc</string>
-				</dict>
 			</array>
 			<key>name</key>
 			<string>%NAME%</string>
