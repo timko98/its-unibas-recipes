@@ -46,13 +46,14 @@ For information about working with Anaconda have a look at the following documen
 			<key>postinstall_script</key>
 			<string>#!/bin/bash
 # Add conda to path
-echo 'export PATH=/anaconda3/bin:$PATH' >> ~/.bash_profile
+echo '/anaconda3/bin' >> /etc/paths.d/com.github.its-unibas.munki.Anaconda3
 </string>
 			<key>postuninstall_script</key>
 			<string>#!/bin/bash
 # Cleanup
-rm "/Applications/Anaconda-Navigator.app"
+rm -rf "/Applications/Anaconda-Navigator.app"
 rm -rf "/anaconda3"
+rm /etc/paths.d/com.github.its-unibas.munki.Anaconda3
 exit 0
 			</string>
 			<key>uninstall_method</key>
