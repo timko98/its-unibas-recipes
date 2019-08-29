@@ -45,12 +45,9 @@ For information about working with Anaconda have a look at the following documen
 			</array>
 			<key>postinstall_script</key>
 			<string>#!/bin/bash
-# Set correct file permissions
-if [[ -d "/anaconda3" ]];then
-	chmod -R +r "/anaconda3"
-fi
-exit 0
-			</string>
+# Add conda to path
+echo 'export PATH=/anaconda3/bin:$PATH' >> ~/.bash_profile
+</string>
 			<key>postuninstall_script</key>
 			<string>#!/bin/bash
 # Cleanup
