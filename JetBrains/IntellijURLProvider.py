@@ -8,6 +8,7 @@
 # of patent rights can be found in the PATENTS file in the same directory.
 #
 
+from __future__ import absolute_import
 import urllib2
 from xml.dom import minidom
 

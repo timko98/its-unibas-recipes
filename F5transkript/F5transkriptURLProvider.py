@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+from __future__ import print_function
 from HTMLParser import HTMLParser
 from autopkglib import Processor, ProcessorError
 
@@ -32,9 +34,9 @@ class F5transkriptURLProvider(Processor):
             escaped_url = re.search(REGEX, html_source).group(1)
             url = HTMLParser().unescape(escaped_url)
             if self.env["verbose"] > 0:
-                print "F5transkriptURLProvider: Match found is: %s" % escaped_url
-                print "F5transkriptURLProvider: Unescaped url is: %s" % url
-                print "F5transkriptURLProvider: Returning full url: %s%s" % (BASE_URL, url)
+                print("F5transkriptURLProvider: Match found is: %s" % escaped_url)
+                print("F5transkriptURLProvider: Unescaped url is: %s" % url)
+                print("F5transkriptURLProvider: Returning full url: %s%s" % (BASE_URL, url))
         except BaseException as err:
             raise ProcessorError("Failed to get URL: %s" % err)
         self.env["url"] = BASE_URL + url
