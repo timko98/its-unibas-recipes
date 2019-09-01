@@ -10,10 +10,15 @@
 #
 
 from __future__ import absolute_import
-import urllib2
+
 from xml.dom import minidom
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.request import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["PyCharmURLProvider"]
 
@@ -48,8 +53,7 @@ class PyCharmURLProvider(Processor):
         """Retrieve version number from XML."""
         # Read XML
         try:
-            req = urllib2.Request(intellij_version_url)
-            f = urllib2.urlopen(req)
+            f = urlopen(intellij_version_url)
             html = f.read()
             f.close()
         except BaseException as e:
