@@ -55,7 +55,7 @@ class IntellijURLProvider(Processor):
             f = urlopen(intellij_version_url)
             html = f.read()
             f.close()
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError(
                 'Can not download %s: %s' % (
                     intellij_version_url, e)

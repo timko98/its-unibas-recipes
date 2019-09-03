@@ -41,7 +41,7 @@ class F5transkriptURLProvider(Processor):
                 print("F5transkriptURLProvider: Match found is: %s" % escaped_url)
                 print("F5transkriptURLProvider: Unescaped url is: %s" % url)
                 print("F5transkriptURLProvider: Returning full url: %s%s" % (BASE_URL, url))
-        except BaseException as err:
+        except Exception as err:
             raise ProcessorError("Failed to get URL: %s" % err)
         self.env["url"] = BASE_URL + url
 
