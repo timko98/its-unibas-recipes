@@ -1,15 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from HTMLParser import HTMLParser
-from autopkglib import Processor, ProcessorError
+from __future__ import absolute_import, print_function
 
 import re
-import urllib2
+from HTMLParser import HTMLParser
+
+from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.request import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 
 BASE_URL = "https://www.audiotranskription.de"
-REGEX = 'href="(\/audot\/downloadfile\.php\?.*)">Download für Mac \(f5\)'
+REGEX = r'href="(\/audot\/downloadfile\.php\?.*)">Download für Mac \(f5\)'
 
 __all__ = ["F5transkriptURLProvider"]
 
@@ -27,15 +33,15 @@ class F5transkriptURLProvider(Processor):
     def main(self):
 
         try:
-            response = urllib2.urlopen(BASE_URL + "/downloads.html")
+            response = urlopen(BASE_URL + "/downloads.html")
             html_source = response.read()
             escaped_url = re.search(REGEX, html_source).group(1)
             url = HTMLParser().unescape(escaped_url)
             if self.env["verbose"] > 0:
-                print "F5transkriptURLProvider: Match found is: %s" % escaped_url
-                print "F5transkriptURLProvider: Unescaped url is: %s" % url
-                print "F5transkriptURLProvider: Returning full url: %s%s" % (BASE_URL, url)
-        except BaseException as err:
+                print("F5transkriptURLProvider: Match found is: %s" % escaped_url)
+                print("F5transkriptURLProvider: Unescaped url is: %s" % url)
+                print("F5transkriptURLProvider: Returning full url: %s%s" % (BASE_URL, url))
+        except Exception as err:
             raise ProcessorError("Failed to get URL: %s" % err)
         self.env["url"] = BASE_URL + url
 
