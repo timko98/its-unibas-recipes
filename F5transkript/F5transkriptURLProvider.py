@@ -15,7 +15,7 @@ except ImportError:
 
 
 BASE_URL = "https://www.audiotranskription.de"
-REGEX = r'href="(\/audot\/downloadfile\.php\?.*)">Download für Mac \(f5\)'
+REGEX = r"<option data-custom-class=\"macos\" value=\"(/audot/downloadfile\.php\?k=1&amp;d=48&amp;l=de&amp;c=j5i99kpxz1)\">Mac OS \(f5\) \[v7\]</option>"
 
 __all__ = ["F5transkriptURLProvider"]
 
