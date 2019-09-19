@@ -35,14 +35,14 @@ class F5transkriptURLProvider(Processor):
             escaped_url = re.search(REGEX, html_source).group(1)
             url = HTMLParser().unescape(escaped_url)
             if self.env["verbose"] > 0:
-                print("F5transkriptURLProvider: Match found is: %s" % escaped_url)
-                print("F5transkriptURLProvider: Unescaped url is: %s" % url)
                 print(
+                    "F5transkriptURLProvider: Match found is: %s\n"
+                    "F5transkriptURLProvider: Unescaped url is: %s\n"
                     "F5transkriptURLProvider: Returning full url: %s%s"
-                    % (BASE_URL, url)
+                    % (escaped_url, url, BASE_URL, url)
                 )
         except Exception as err:
-            raise ProcessorError("Failed to get URL: %s" % err)
+            raise ProcessorError("Failed to get download URL: %s" % err)
         self.env["url"] = BASE_URL + url
 
 
