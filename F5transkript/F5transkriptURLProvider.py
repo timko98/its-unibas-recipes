@@ -22,13 +22,10 @@ __all__ = ["F5transkriptURLProvider"]
 
 class F5transkriptURLProvider(Processor):
     """Provides a download URL for the latest version of F5transkript"""
+
     description = __doc__
     input_variables = {}
-    output_variables = {
-        "url": {
-            "description": "URL to latest version",
-        },
-    }
+    output_variables = {"url": {"description": "URL to latest version"}}
 
     def main(self):
 
@@ -40,7 +37,10 @@ class F5transkriptURLProvider(Processor):
             if self.env["verbose"] > 0:
                 print("F5transkriptURLProvider: Match found is: %s" % escaped_url)
                 print("F5transkriptURLProvider: Unescaped url is: %s" % url)
-                print("F5transkriptURLProvider: Returning full url: %s%s" % (BASE_URL, url))
+                print(
+                    "F5transkriptURLProvider: Returning full url: %s%s"
+                    % (BASE_URL, url)
+                )
         except Exception as err:
             raise ProcessorError("Failed to get URL: %s" % err)
         self.env["url"] = BASE_URL + url
