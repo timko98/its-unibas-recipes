@@ -4,7 +4,10 @@
 from __future__ import absolute_import, print_function
 
 import re
-from HTMLParser import HTMLParser
+try : 
+    from html.parser import HTMLParser # For Python 3
+except ImportError:
+    from HTMLParser import HTMLParser # For Python 2
 
 from autopkglib import Processor, ProcessorError
 
@@ -15,7 +18,7 @@ except ImportError:
 
 
 BASE_URL = "https://www.audiotranskription.de"
-REGEX = r"<option data-custom-class=\"macos\" value=\"(/audot/downloadfile\.php\?k=1&amp;d=48&amp;l=de&amp;c=j5i99kpxz1)\">Mac OS \(f5\) \[v7\]</option>"
+REGEX = r"href=\"(/audot/downloadfile\.php\?k=1&amp;d=48&amp;l=de&amp;c=j5i99kpxz1)\">Download für Mac \(f5\)"
 
 __all__ = ["F5transkriptURLProvider"]
 
