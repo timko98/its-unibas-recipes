@@ -4,17 +4,17 @@
 from __future__ import absolute_import, print_function
 
 import re
-try : 
-    from html.parser import HTMLParser # For Python 3
-except ImportError:
-    from HTMLParser import HTMLParser # For Python 2
 
 from autopkglib import Processor, ProcessorError
 
 try:
-    from urllib.request import urlopen  # For Python 3
+    #import for Python 3
+    from urllib.request import urlopen 
+    from html.parser import HTMLParser 
 except ImportError:
-    from urllib2 import urlopen  # For Python 2
+    #import for Python 2
+    from urllib2 import urlopen  
+    from HTMLParser import HTMLParser
 
 
 BASE_URL = "https://www.audiotranskription.de"
