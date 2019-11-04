@@ -10,7 +10,7 @@
     <dict>
         <key>NAME</key>
         <string>MAXQDA2018</string>
-        <key>MUNI_REPO_SUBDIR</key>
+        <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
         <key>pkginfo</key>
         <dict>
@@ -38,7 +38,7 @@
     <string>0.4.2</string>
     <key>ParentRecipe</key>
     <string>com.github.its-unibas.download.MAXQDA2018</string>
-    <key>Proces</key>
+    <key>Process</key>
     <array>
         <dict>
             <key>Arguments</key>
