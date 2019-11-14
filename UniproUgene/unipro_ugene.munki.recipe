@@ -13,7 +13,7 @@
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/%NAME%</string>
         <key>SEARCH_PATTERN2</key>
-        <string>(?&lt;=ugene\.unipro\.ru\/downloads\/ugene-)..\..(?=-mac-x..-64.dmg)</string>
+        <string>(?&lt;=ugene\.unipro\.ru\/downloads\/ugene-).*(?=-mac-x..-64.dmg)</string>
         <key>SEARCH_URL</key>
         <string>http://ugene.net/downloads/ugene_get_latest_mac_x86_64.html</string>
         <key>pkginfo</key>
