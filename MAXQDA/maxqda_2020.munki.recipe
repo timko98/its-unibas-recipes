@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of MAXQDA2018 and imports into Munki.</string>
+    <string>Downloads the latest version of MAXQDA2020 and imports into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.its-unibas.munki.MAXQDA2018</string>
+    <string>com.github.its-unibas.munki.MAXQDA2020</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

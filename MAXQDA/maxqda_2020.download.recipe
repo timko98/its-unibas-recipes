@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Download Recipe for the latest version of MAXQDA2018 </string>
+    <string>Download Recipe for the latest version of MAXQDA2020</string>
     <key>Identifier</key>
-    <string>com.github.its-unibas.download.MAXQDA2018</string>
+    <string>com.github.its-unibas.download.MAXQDA2020</string>
     <key>Input</key>
     <dict>
         <key>VERSION</key>
