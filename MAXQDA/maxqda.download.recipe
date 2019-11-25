@@ -3,15 +3,18 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Download Recipe for the latest version of MAXQDA2020</string>
+    <string>Download Recipe for the latest version of MAXQDA
+            If you want to download another version of MAXQDA just change VERSION to the specific version Number. Then the download link will be switched out to the specific version. 
+            At the moment it works with the versions 12, 2018 and 2020. 
+    </string>
     <key>Identifier</key>
-    <string>com.github.its-unibas.download.MAXQDA2020</string>
+    <string>com.github.its-unibas.download.MAXQDA</string>
     <key>Input</key>
     <dict>
         <key>VERSION</key>
         <string>2020</string>
         <key>NAME</key>
-        <string>MAXQDA2020</string>
+        <string>MAXQDA</string>
         <key>URL</key>
         <string>http://www.maxqda.de/updates/%VERSION%/MAXQDA%VERSION%.dmg</string>
     </dict>
@@ -40,7 +43,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%pathname%/%NAME%.app</string>
+                <string>%pathname%/%NAME%%VERSION%.app</string>
             </dict>
             
         </dict>

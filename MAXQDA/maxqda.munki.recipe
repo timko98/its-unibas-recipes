@@ -3,15 +3,18 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of MAXQDA2020 and imports into Munki.</string>
+    <string>Downloads the latest version of MAXQDA and imports into Munki. 
+        If you want to download another version of MAXQDA just change VERSION to the specific version Number. Then the download link will be switched out to the specific version. 
+        At the moment it works with the versions 12, 2018 and 2020. 
+    </string>
     <key>Identifier</key>
-    <string>com.github.its-unibas.munki.MAXQDA2020</string>
+    <string>com.github.its-unibas.munki.MAXQDA</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>MAXQDA2020</string>
+        <string>MAXQDA</string>
         <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/%NAME%</string>
+        <string>apps/Maxqda</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -21,7 +24,7 @@
             <key>category</key>
             <string>Productivity</string>
             <key>description</key>
-            <string>MAXQDA ist eine Software für qualitative Datenanalyse und Mixed Methods Forschung.</string> 
+            <string>MAXQDA is a Software for Data Analysis and Mixed Methods Research.</string> 
             <key>developer</key>
             <string>VERBI Software GMBH</string>
             <key>display_name</key>
@@ -37,7 +40,7 @@
     <key>MinimumVersion</key>
     <string>0.4.2</string>
     <key>ParentRecipe</key>
-    <string>com.github.its-unibas.download.MAXQDA2018</string>
+    <string>com.github.its-unibas.download.MAXQDA</string>
     <key>Process</key>
     <array>
         <dict>
