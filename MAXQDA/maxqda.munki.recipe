@@ -28,11 +28,11 @@
             <key>developer</key>
             <string>VERBI Software GMBH</string>
             <key>display_name</key>
-            <string>%NAME%</string>
+            <string>%NAME% %VERSION%</string>
             <key>minimum_os_version</key>
             <string>10.12.0</string>
             <key>name</key>
-            <string>%NAME%</string>
+            <string>%NAME%%VERSION%</string>
             <key>unattended_install</key>
             <true />
         </dict>
