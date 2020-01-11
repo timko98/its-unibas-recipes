@@ -5,15 +5,13 @@ from __future__ import absolute_import, print_function
 
 import re
 
-from autopkglib import Processor, ProcessorError
+from autopkglib import URLGetter
 
 try:
-    #import for Python 3
-    from urllib.request import urlopen 
-    from html.parser import HTMLParser 
+    # import for Python 3
+    from html.parser import HTMLParser
 except ImportError:
-    #import for Python 2
-    from urllib2 import urlopen  
+    # import for Python 2
     from HTMLParser import HTMLParser
 
 
@@ -23,7 +21,7 @@ REGEX = r"href=\"(/audot/downloadfile\.php\?k=1&amp;d=48&amp;l=de&amp;c=j5i99kpx
 __all__ = ["F5transkriptURLProvider"]
 
 
-class F5transkriptURLProvider(Processor):
+class F5transkriptURLProvider(URLGetter):
     """Provides a download URL for the latest version of F5transkript"""
 
     description = __doc__
@@ -32,20 +30,17 @@ class F5transkriptURLProvider(Processor):
 
     def main(self):
 
-        try:
-            response = urlopen(BASE_URL + "/downloads.html")
-            html_source = response.read()
-            escaped_url = re.search(REGEX, html_source).group(1)
-            url = HTMLParser().unescape(escaped_url)
-            if self.env["verbose"] > 0:
-                print(
-                    "F5transkriptURLProvider: Match found is: %s\n"
-                    "F5transkriptURLProvider: Unescaped url is: %s\n"
-                    "F5transkriptURLProvider: Returning full url: %s%s"
-                    % (escaped_url, url, BASE_URL, url)
-                )
-        except Exception as err:
-            raise ProcessorError("Failed to get download URL: %s" % err)
+        html_source = self.download(BASE_URL + "/downloads.html")
+        escaped_url = re.search(REGEX, html_source).group(1)
+        url = HTMLParser().unescape(escaped_url)
+        if self.env["verbose"] > 0:
+            print(
+                "F5transkriptURLProvider: Match found is: %s\n"
+                "F5transkriptURLProvider: Unescaped url is: %s\n"
+                "F5transkriptURLProvider: Returning full url: %s%s"
+                % (escaped_url, url, BASE_URL, url)
+            )
+
         self.env["url"] = BASE_URL + url
 
 
