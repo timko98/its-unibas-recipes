@@ -36,6 +36,7 @@ class F5transkriptURLProvider(Processor):
     def main(self):
 
         try:
+            # Check Major Python version (2 or 3)
             if sys.version_info.major < 3:
                 response = urlopen(BASE_URL + "/downloads.html")
                 html_source = response.read()
