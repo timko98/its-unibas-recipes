@@ -63,22 +63,6 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>faux_root</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
-				<key>installs_item_paths</key>
-				<array>
-					<string>/Library/LaunchDaemons/ch.unibas.its.cs.ants.plist</string>
-					<string>/Library/LaunchDaemons/ch.unibas.its.cs.ants.run-now.plist</string>
-					<string>/Library/ANTS-Framework/Python.framework/Versions/Current/bin/ants</string>
-					<string>/private/etc/paths.d/ch.unibas.its.cs.ants</string>
-				</array>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>path_list</key>
 				<array>
 					<string>%RECIPE_CACHE_DIR%/unpack</string>
