@@ -53,36 +53,36 @@ class PyCharmURLProvider(Processor):
 
     __doc__ = description
 
-    def get_pycharm_version(self, intellij_version_url):
+    def get_pycharm_version(self, pycharm_version_url):
         """Retrieve version number from XML."""
         # Read XML
         try:
             if sys.version_info.major < 3:
-                f = urlopen(intellij_version_url)
+                f = urlopen(pycharm_version_url)
                 html = f.read()
                 f.close()
             else:
-                f = urlopen(intellij_version_url, cafile=certifi.where())
+                f = urlopen(pycharm_version_url, cafile=certifi.where())
                 html = f.read().decode("utf-8")
                 f.close()
-            
+
         except Exception as e:
-            raise ProcessorError("Can not download %s: %s" % (intellij_version_url, e))
+            raise ProcessorError("Can not download %s: %s" % (pycharm_version_url, e))
 
         root = minidom.parseString(html)
         # Get all products in the XML
         products = root.childNodes[0].getElementsByTagName("product")
 
-        intellij_product = None
+        pycharm_product = None
         for product in products:
             if (
                 product.hasAttribute("name")
                 and product.getAttribute("name") == "PyCharm"
             ):
-                intellij_product = product
+                pycharm_product = product
 
-        if intellij_product is not None:
-            channels = intellij_product.getElementsByTagName("channel")
+        if pycharm_product is not None:
+            channels = pycharm_product.getElementsByTagName("channel")
             for channel in channels:
                 if (
                     channel.hasAttribute("licensing")
@@ -100,7 +100,7 @@ class PyCharmURLProvider(Processor):
                         # We can return here because we found the release channel.
                         return str(available_versions[0])
         else:
-            raise ProcessorError("Did not find Intellij in version XML.")
+            raise ProcessorError("Did not find PyCharm in version XML.")
 
     def main(self):
         """Main function."""
