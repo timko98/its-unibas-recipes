@@ -14,10 +14,15 @@ from xml.dom import minidom
 
 from autopkglib import Processor, ProcessorError
 
+import sys
+
 try:
-    from urllib.request import urlopen  # For Python 3
+    # For Python 3
+    from urllib.request import urlopen  
+    import certifi
 except ImportError:
-    from urllib2 import urlopen  # For Python 2
+    # For Python 2
+    from urllib2 import urlopen  
 
 __all__ = ["IntellijURLProvider"]
 
@@ -51,9 +56,14 @@ class IntellijURLProvider(Processor):
         """Retrieve version number from XML."""
         # Read XML
         try:
-            f = urlopen(intellij_version_url)
-            html = f.read()
-            f.close()
+            if sys.version_info.major < 3:
+                f = urlopen(intellij_version_url)
+                html = f.read()
+                f.close()
+            else:
+                f = urlopen(intellij_version_url, cafile=certifi.where())
+                html = f.read().decode("utf-8")
+                f.close()
         except Exception as e:
             raise ProcessorError("Can not download %s: %s" % (intellij_version_url, e))
 
