@@ -9,8 +9,8 @@ from autopkglib import Processor, ProcessorError
 
 try:
     #import for Python 3
-    from urllib.request import urlopen 
-    from html.parser import HTMLParser 
+    from six.moves.urllib.request import urlopen 
+    from six.moves.html.parser import HTMLParser 
 except ImportError:
     #import for Python 2
     from urllib2 import urlopen  
