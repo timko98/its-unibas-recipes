@@ -4,18 +4,21 @@
 from __future__ import absolute_import, print_function
 
 import re
-from HTMLParser import HTMLParser
 
 from autopkglib import Processor, ProcessorError
 
 try:
-    from urllib.request import urlopen  # For Python 3
+    #import for Python 3
+    from urllib.request import urlopen 
+    from html.parser import HTMLParser 
 except ImportError:
-    from urllib2 import urlopen  # For Python 2
+    #import for Python 2
+    from urllib2 import urlopen  
+    from HTMLParser import HTMLParser
 
 
 BASE_URL = "https://www.audiotranskription.de"
-REGEX = r"<option data-custom-class=\"macos\" value=\"(/audot/downloadfile\.php\?k=1&amp;d=48&amp;l=de&amp;c=j5i99kpxz1)\">Mac OS \(f5\) \[v7\]</option>"
+REGEX = r"href=\"(/audot/downloadfile\.php\?k=1&amp;d=48&amp;l=de&amp;c=j5i99kpxz1)\">Download für Mac \(f5\)"
 
 __all__ = ["F5transkriptURLProvider"]
 
