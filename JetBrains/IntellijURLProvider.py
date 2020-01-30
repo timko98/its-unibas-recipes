@@ -18,11 +18,11 @@ import sys
 
 try:
     # For Python 3
-    from urllib.request import urlopen  
+    from urllib.request import urlopen
     import certifi
 except ImportError:
     # For Python 2
-    from urllib2 import urlopen  
+    from urllib2 import urlopen
 
 __all__ = ["IntellijURLProvider"]
 
@@ -56,14 +56,14 @@ class IntellijURLProvider(Processor):
         """Retrieve version number from XML."""
         # Read XML
         try:
+            # Check Major Python version (2 or 3)
             if sys.version_info.major < 3:
                 f = urlopen(intellij_version_url)
                 html = f.read()
-                f.close()
             else:
                 f = urlopen(intellij_version_url, cafile=certifi.where())
                 html = f.read().decode("utf-8")
-                f.close()
+            f.close()
         except Exception as e:
             raise ProcessorError("Can not download %s: %s" % (intellij_version_url, e))
 
