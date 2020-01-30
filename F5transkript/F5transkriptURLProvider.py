@@ -7,13 +7,16 @@ import re
 
 from autopkglib import Processor, ProcessorError
 
+import sys
+
 try:
-    #import for Python 3
-    from urllib.request import urlopen 
-    from html.parser import HTMLParser 
+    # import for Python 3
+    from urllib.request import urlopen
+    from html.parser import HTMLParser
+    import certifi
 except ImportError:
-    #import for Python 2
-    from urllib2 import urlopen  
+    # import for Python 2
+    from urllib2 import urlopen
     from HTMLParser import HTMLParser
 
 
@@ -33,8 +36,14 @@ class F5transkriptURLProvider(Processor):
     def main(self):
 
         try:
-            response = urlopen(BASE_URL + "/downloads.html")
-            html_source = response.read()
+            # Check Major Python version (2 or 3)
+            if sys.version_info.major < 3:
+                response = urlopen(BASE_URL + "/downloads.html")
+                html_source = response.read()
+
+            else:
+                response = urlopen(BASE_URL + "/downloads.html", cafile=certifi.where())
+                html_source = response.read().decode("utf-8")
             escaped_url = re.search(REGEX, html_source).group(1)
             url = HTMLParser().unescape(escaped_url)
             if self.env["verbose"] > 0:
