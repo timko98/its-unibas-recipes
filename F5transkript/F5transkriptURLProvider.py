@@ -7,6 +7,8 @@ import re
 
 from autopkglib import URLGetter
 
+import sys
+
 try:
     # import for Python 3
     from html.parser import HTMLParser
@@ -29,8 +31,10 @@ class F5transkriptURLProvider(URLGetter):
     output_variables = {"url": {"description": "URL to latest version"}}
 
     def main(self):
-
-        html_source = self.download(BASE_URL + "/downloads.html")
+        if sys.version_info.major < 3:
+            html_source = self.download(BASE_URL + "/downloads.html")
+        else:
+            html_source = self.download(BASE_URL + "/downloads.html").decode("utf-8")
         escaped_url = re.search(REGEX, html_source).group(1)
         url = HTMLParser().unescape(escaped_url)
         if self.env["verbose"] > 0:

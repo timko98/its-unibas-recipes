@@ -12,19 +12,16 @@ from __future__ import absolute_import
 
 from xml.dom import minidom
 
-from autopkglib import Processor, ProcessorError
+from autopkglib import URLGetter, ProcessorError
 
-try:
-    from urllib.request import urlopen  # For Python 3
-except ImportError:
-    from urllib2 import urlopen  # For Python 2
+import sys
 
 __all__ = ["IntellijURLProvider"]
 
 intellij_version_url = "https://www.jetbrains.com/updates/updates.xml"
 
 
-class IntellijURLProvider(Processor):
+class IntellijURLProvider(URLGetter):
     """Provide URL for latest Intellij IDEA build."""
 
     description = "Provides URL and version for the latest release of Intellij."
@@ -51,9 +48,11 @@ class IntellijURLProvider(Processor):
         """Retrieve version number from XML."""
         # Read XML
         try:
-            f = urlopen(intellij_version_url)
-            html = f.read()
-            f.close()
+            # Check Major Python version (2 or 3)
+            if sys.version_info.major < 3:
+                html = self.download(intellij_version_url)
+            else:
+                html = self.download(intellij_version_url).decode("utf-8")
         except Exception as e:
             raise ProcessorError("Can not download %s: %s" % (intellij_version_url, e))
 
