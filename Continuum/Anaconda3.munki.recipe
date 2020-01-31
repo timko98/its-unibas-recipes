@@ -46,7 +46,7 @@ For information about working with Anaconda have a look at the following documen
 			<key>postinstall_script</key>
 			<string>#!/bin/bash
 # Add conda to path
-echo '/anaconda3/bin' >> /etc/paths.d/com.github.its-unibas.munki.Anaconda3
+echo '/opt/anaconda3/bin' >> /etc/paths.d/com.github.its-unibas.munki.Anaconda3
 </string>
 			<key>postuninstall_script</key>
 			<string>#!/bin/bash

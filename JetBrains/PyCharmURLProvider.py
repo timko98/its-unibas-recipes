@@ -13,24 +13,17 @@ from __future__ import absolute_import
 
 from xml.dom import minidom
 
-from autopkglib import Processor, ProcessorError
+from autopkglib import URLGetter, ProcessorError
 
 import sys
 
-try:
-    # For Python 3
-    from urllib.request import urlopen
-    import certifi
-except ImportError:
-    # For Python 2
-    from urllib2 import urlopen
 
 __all__ = ["PyCharmURLProvider"]
 
 pyCharm_version_url = "https://www.jetbrains.com/updates/updates.xml"
 
 
-class PyCharmURLProvider(Processor):
+class PyCharmURLProvider(URLGetter):
     """Provide URL for latest PyCharm IDEA build."""
 
     description = "Provides URL and version for the latest release of PyCharm."
@@ -59,12 +52,9 @@ class PyCharmURLProvider(Processor):
         try:
             # Check Major Python version (2 or 3)
             if sys.version_info.major < 3:
-                f = urlopen(pycharm_version_url)
-                html = f.read()
+                html = self.download(pyCharm_version_url)
             else:
-                f = urlopen(pycharm_version_url, cafile=certifi.where())
-                html = f.read().decode("utf-8")
-            f.close()
+                html = self.download(pyCharm_version_url).decode("utf-8")
 
         except Exception as e:
             raise ProcessorError("Can not download %s: %s" % (pycharm_version_url, e))
